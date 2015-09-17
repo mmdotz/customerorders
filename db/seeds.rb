@@ -23,17 +23,14 @@
 
 
   50.times do
-    Item.create({
+    item = Item.create({
       name:     Faker::Commerce.product_name,
       price:    Faker::Number.between(1, 345),
       desc:     Faker::Commerce.color,
       })
-  end
-
-  30.times do
    Order.create({
     user_id:   Faker::Number.between(1,30),
-    item_id:   Faker::Number.between(1,50),
+    item_id:   item.id,
     qty:       Faker::Number.between(1,10),
    })
   end
