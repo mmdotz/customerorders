@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   delete  'users/destroy' to: 'users#destroy'
 
-  root 'users#index'
+  root    'users#index'
 end
