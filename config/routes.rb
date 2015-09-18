@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'addresses/index'
-
-  get 'addresses/new'
-
-  get 'addresses/create'
-
-  get 'addresses/update'
-
-  get 'addresses/destroy'
-
   resources :addresses
 
   get     '/items',      to: 'items#index'
@@ -18,6 +8,8 @@ Rails.application.routes.draw do
   post    '/items',      to: 'items#create'
   put     '/items/:id',  to: 'items#update'
   delete  '/items/:id',  to: 'items#destroy'
+
+  get     '/items/:id/users', to: 'items#users'  #join tables
 
   get     '/orders',      to: 'orders#index'
   get     '/orders/new',  to: 'orders#new'
@@ -32,6 +24,8 @@ Rails.application.routes.draw do
   post    '/users',       to: 'users#create'
   put     '/users/:id',   to: 'users#update'
   delete  '/users/:id',   to: 'users#destroy'
+
+  get     '/users/:id/items', to: 'users#items'  #join tables
 
   root    'users#index'
 end

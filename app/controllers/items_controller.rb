@@ -18,13 +18,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def users
+    item = Item.find(params[:id])
+    render json: item.users.to_json, status: 200
+  end
+
+
   def create
-     item = Item.new
-      item.name    = params[:name]
-      item.price   = params[:price]
-      item.desc    = params[:desc]
-      item.save!
-      render json: item, status: 200
+    item = Item.new
+    item.name    = params[:name]
+    item.price   = params[:price]
+    item.desc    = params[:desc]
+    item.save!
+    render json: item, status: 200
   end
 
   def update
@@ -49,6 +55,5 @@ class ItemsController < ApplicationController
     else
       render json: { error_msg: 'Item Not Found!', id: params[:id] }.to_json, status: 404
     end
-
   end
 end

@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def items
+    user = User.find(params[:id])
+    render json: user.items.to_json, status: 200
+  end
+
   def create
     #For create to work, we must *require* that a parameter is sent with the name ':user.id'
       user             = User.new
