@@ -22,26 +22,30 @@ class OrdersController < ApplicationController
       order = Order.new
       order.item_id = params[:item_id]
       order.user_id = params[:user_id]
-      order.qty = params[:qty]
+      order.qty     = params[:qty]
       order.save!
       render json: order
   end
 
   def update
     if Order.exists?(params[:id])
-      order = Order.find(params[:id])
-      order.qty  = params[:qty]
+      order       = Order.find(params[:id])
+      order.qty   = params[:qty]
       order.save
       render json: order, status: 200
+    else
+      render json: { error_msg: 'Order Not Found!', id: params[:id] }.to_json, status: 404
     end
   end
 
   def destroy
     if Order.exists?(params[:id])
-      order = Order.find(params[:id])
+      order     = Order.find(params[:id])
       order.destroy
-      message = "Order was deleted."
+      message   = "Order was deleted."
       render json: message, status: 200
+    else
+      render json: { error_msg: 'Order Not Found!', id: params[:id] }.to_json, status: 404
     end
   end
 end
