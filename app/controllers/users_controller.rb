@@ -40,14 +40,15 @@ class UsersController < ApplicationController
     end
   end
 
-  # def destroy
-  #   if User.exists?(params[:id])
-  #     user = User.find(params[:id])
-  #     user.destroy
-  #     user.save
-  #     render json: user, status: 200
-  #   end
-  # end
+  def destroy
+    if User.exists?(params[:id])
+      user = User.find(params[:id])
+      user.destroy
+      user.save
+      message = "User was deleted."
+      render json: message, status: 200
+    end
+  end
 
 end
 
