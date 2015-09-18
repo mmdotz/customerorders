@@ -1,76 +1,55 @@
 class UsersController < ApplicationController
   def index
+    # render text: "params : #{params.inspect}"
     users = User.all
-    render json: users.to_json status:200
-  end
-
-  def show
-  end
-
-  def create
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-end
-
-
-class TasksController < ApplicationController
-
-  def index
-    tasks = Task.all
-    render json: tasks.to_json, status: 200
+    render json: users.to_json, status: 200
   end
 
   def new
-    tasks = Task.new
-    render json: tasks.to_json, status: 200
+    user = User.new
+    render json: user.to_json, status: 200
   end
 
   def show
-    # render text: "params : #{params.inspect}"
-    if Task.exists?(params[:id])
-      task = Task.find(params[:id])
-      render json: task.to_json, status: 200
+  # render text: "params : #{params.inspect}"
+    if User.exists?(params[:id])
+      user = User.find(params[:id])
+      render json: user.to_json, status: 200
     else
-      render json: { error_msg: 'Record Not Found!', id: params[:id] }.to_json, status: 404
+      render json: { error_msg: 'User Not Found!', id: params[:id] }.to_json, status: 404
     end
   end
 
-  #edit would go here
+  # def create
+  #   #For create to work, we must *require* that a parameter is sent with the name ':user.id'
+  #   if params[:user_id].empty?
+  #     err_msg = "One of the search parameters was empty or not found"
+  #     render json: { error_msg: err_msg }.to_json, status: 422
+  #   else
+  #     user = User.new
+  #     user.?? = params[:??] #change this
+  #     user.save!
+  #     render json: user, status: 200
+  #   end
+  # end
 
-  def create
-    #For create to work, we must *require* that a parameter is sent with the name 'task'
-    if params[:task].empty?
-      err_msg = "The 'task' parameter was empty or not found"
-      render json: { error_msg: err_msg }.to_json, status: 422
-    else
-      task = Task.new
-      task.task = params[:task]
-      task.save!
-      render json: task
-    end
-  end
+  # def update
+  #   if User.exists?(params[:id])
+  #     user = User.find(params[:id])
+  #     user.completed  = params[:completed]  #change this
+  #     user.save
+  #     render json: user, status: 200
+  #   end
+  # end
 
-  def update
-    if Task.exists?(params[:id])
-      task = Task.find(params[:id])
-      task.completed  = params[:completed]
-      task.save
-      render json: task, status: 200
-    end
-  end
-
-  def destroy
-    if Task.exists?(params[:id])
-      task = Task.find(params[:id])
-      task.destroy
-      message = "Task #{task} was deleted."
-      render json: message, status: 200
-    end
-  end
+  # def destroy
+  #   if User.exists?(params[:id])
+  #     user = User.find(params[:id])
+  #     user.destroy
+  #     user.save
+  #     render json: user, status: 200
+  #   end
+  # end
 
 end
+

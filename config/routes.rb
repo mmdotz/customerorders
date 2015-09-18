@@ -1,16 +1,29 @@
 Rails.application.routes.draw do
 
-  get     'users/index'   to: 'users#index'
+  get     '/orders',      to: 'orders#index'
 
-  get     'users/new'     to: 'users#new'
+  get     '/orders/new',  to: 'orders#new'
 
-  get     'users/show'    to: 'users#show'
+  get     '/orders/:id',  to: 'orders#show'
 
-  post    'users/create'  to: 'users#create'
+  post     '/orders',     to: 'orders#create'
 
-  put     'users/update'  to: 'users#update'
+  put     '/orders/:id',  to: 'orders#update'
 
-  delete  'users/destroy' to: 'users#destroy'
+  delete  '/orders/:id',  to: 'orders#destroy'
+
+  get     '/users',       to: 'users#index'
+
+  get     '/users/new',   to: 'users#new'
+
+  get     '/users/:id',   to: 'users#show'
+
+  post    '/users',       to: 'users#create'
+
+  put     '/users/:id',   to: 'users#update'
+
+  delete  '/users/:id',   to: 'users#destroy'
 
   root    'users#index'
 end
+
