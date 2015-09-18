@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       order = Order.find(params[:id])
       render json: order.to_json, status: 200
     else
-      render json: { error_msg: 'user Not Found!', id: params[:id] }.to_json, status: 404
+      render json: { error_msg: 'Order Not Found!', id: params[:id] }.to_json, status: 404
     end
   end
 
@@ -27,21 +27,21 @@ class OrdersController < ApplicationController
       render json: order
   end
 
-  # def update
-  #   if Order.exists?(params[:id])
-  #     order = Order.find(params[:id])
-  #     order.completed  = params[:completed]  #change this
-  #     order.save
-  #     render json: order, status: 200
-  #   end
-  # end
+  def update
+    if Order.exists?(params[:id])
+      order = Order.find(params[:id])
+      order.qty  = params[:qty]
+      order.save
+      render json: order, status: 200
+    end
+  end
 
-  # def destroy
-  #   if Order.exists?(params[:id])
-  #     order = Order.find(params[:id])
-  #     order.destroy
-  #     message = "Order was deleted."
-  #     render json: message, status: 200
-  #   end
-  # end
+  def destroy
+    if Order.exists?(params[:id])
+      order = Order.find(params[:id])
+      order.destroy
+      message = "Order was deleted."
+      render json: message, status: 200
+    end
+  end
 end

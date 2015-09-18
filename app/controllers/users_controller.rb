@@ -30,14 +30,15 @@ class UsersController < ApplicationController
       render json: user, status: 200
   end
 
-  # def update
-  #   if User.exists?(params[:id])
-  #     user = User.find(params[:id])
-  #     user.completed  = params[:completed]  #change this
-  #     user.save
-  #     render json: user, status: 200
-  #   end
-  # end
+  def update
+    if User.exists?(params[:id])
+      user.first_name = params[:first_name]
+      user.last_name = params[:last_name]
+      user.age = params[:age]
+      user.save!
+      render json: user, status: 200
+    end
+  end
 
   # def destroy
   #   if User.exists?(params[:id])
