@@ -20,18 +20,15 @@ class UsersController < ApplicationController
     end
   end
 
-  # def create
-  #   #For create to work, we must *require* that a parameter is sent with the name ':user.id'
-  #   if params[:user_id].empty?
-  #     err_msg = "One of the search parameters was empty or not found"
-  #     render json: { error_msg: err_msg }.to_json, status: 422
-  #   else
-  #     user = User.new
-  #     user.?? = params[:??] #change this
-  #     user.save!
-  #     render json: user, status: 200
-  #   end
-  # end
+  def create
+    #For create to work, we must *require* that a parameter is sent with the name ':user.id'
+      user = User.new
+      user.first_name = params[:first_name]
+      user.last_name = params[:last_name]
+      user.age = params[:age]
+      user.save!
+      render json: user, status: 200
+  end
 
   # def update
   #   if User.exists?(params[:id])

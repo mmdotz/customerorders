@@ -11,25 +11,21 @@ class OrdersController < ApplicationController
 
   def show
     if Order.exists?(params[:id])
-      order = order.find(params[:id])
+      order = Order.find(params[:id])
       render json: order.to_json, status: 200
     else
       render json: { error_msg: 'user Not Found!', id: params[:id] }.to_json, status: 404
     end
   end
 
-  # def create
-  #   #For create to work, we must *require* that a parameter is sent with the name ':order.id'
-  #   if params[:order_id].empty?
-  #     err_msg = "One of the search parameters was empty or not found"
-  #     render json: { error_msg: err_msg }.to_json, status: 422
-  #   else
-  #     order = Order.new
-  #     order.task = params[:] #change this
-  #     order.save!
-  #     render json: order
-  #   end
-  # end
+  def create
+      order = Order.new
+      order.item_id = params[:item_id]
+      order.user_id = params[:user_id]
+      order.qty = params[:qty]
+      order.save!
+      render json: order
+  end
 
   # def update
   #   if Order.exists?(params[:id])
