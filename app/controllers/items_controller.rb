@@ -4,14 +4,14 @@ class ItemsController < ApplicationController
     render json: items.to_json, status: 200
   end
 
-  def new
-    item = Item.new
-    render json: items.to_json, status: 200
-  end
+  # def new
+  #   item = Item.new
+  #   render json: item.to_json, status: 200
+  # end
 
   def show
     if Item.exists?(params[:id])
-      item = item.find(params[:id])
+      item = Item.find(params[:id])
       render json: item.to_json, status: 200
     else
       render json: { error_msg: 'Item Not Found!', id: params[:id] }.to_json, status: 404

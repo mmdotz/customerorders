@@ -5,10 +5,10 @@ class UsersController < ApplicationController
     render json: users.to_json, status: 200
   end
 
-  def new
-    user = User.new
-    render json: user.to_json, status: 200
-  end
+  # def new
+  #   user = User.new
+  #   render json: user.to_json, status: 200
+  # end
 
   def show
   # render text: "params : #{params.inspect}"

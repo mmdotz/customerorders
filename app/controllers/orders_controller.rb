@@ -4,10 +4,10 @@ class OrdersController < ApplicationController
     render json: orders.to_json, status: 200
   end
 
-  def new
-    order = Order.new
-    render json: order.to_json, status: 200
-  end
+  # def new
+  #   order = Order.new
+  #   render json: order.to_json, status: 200
+  # end
 
   def show
     if Order.exists?(params[:id])

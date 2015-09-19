@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :addresses
 
   get     '/items',      to: 'items#index'
-  get     '/items/new',  to: 'items#new'
+  get     '/items/new',  to: 'items#new'  #will not save
   get     '/items/:id',  to: 'items#show'
   post    '/items',      to: 'items#create'
   put     '/items/:id',  to: 'items#update'

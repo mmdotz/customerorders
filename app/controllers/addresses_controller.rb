@@ -4,10 +4,10 @@ class AddressesController < ApplicationController
     render json: address.to_json, status: 200
   end
 
-  def new
-    address = Address.new
-    render json: address.to_json, status: 200
-  end
+  # def new
+  #   address = Address.new
+  #   render json: address.to_json, status: 200
+  # end
 
   def show
     if Address.exists?(params[:id])
@@ -20,7 +20,7 @@ class AddressesController < ApplicationController
 
 
   def create
-    address = Address.new
+    address = Address.new  # need to be able to match to a valid user_id
     address.street_name = params[:street_name]
     address.city        = params[:city]
     address.state       = params[:state]

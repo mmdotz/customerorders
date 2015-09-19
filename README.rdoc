@@ -5,4 +5,4 @@ This app tracks the orders of 30 customers. You may see all of the orders, or al
 
 #Using this file
 You may run this file by calling X from the command line
-You may view this app at the following URL:
+You may view this app at the following URL: https://powerful-mountain-9724.herokuapp.com/
