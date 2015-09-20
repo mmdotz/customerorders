@@ -3,6 +3,36 @@
 #Description:
 This app tracks the orders of 30 customers. You may see all of the orders, or all of the items a user has, and the user's ship to address.
 
+#Instructions
+Perform actions on the four tables item(s), order(s), addresses, and user(s) by using the following commands:
+
+-- To view all records in a table:
+Send a `GET` request to https://powerful-mountain-9724.herokuapp.com/ .  The response will be in JSON format.
+
+-- To view a particular record in a table:
+Send a `GET` request to https://powerful-mountain-9724.herokuapp.com/tablename/id . The response will be in JSON format.
+
+-- To create a new record in a table:
+Send a `POST` request to https://powerful-mountain-9724.herokuapp.com/tablename/
+    For a new `address` use the following parameters:
+    "street_name"    as string (omit all quotations)
+    "city"           as string
+    "state"          as string
+    "zip"            as integer
+
+    For a new `user` use the following parameters:
+    "first_name"  as string
+    "last_name"   as string
+    "age"         as integer
+
+    For a new `item` use the following parameters:
+    "name"        as string
+    "desc"        as string
+    "price"       as integer
+
+    For a new `order` use the following parameters:
+    "qty"         as integer
+
 #Using this file
 You may run this file by calling X from the command line
 You may view this app at the following URL: https://powerful-mountain-9724.herokuapp.com/
