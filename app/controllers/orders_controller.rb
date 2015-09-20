@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def create
+  def create  # create only if
       order = Order.new
       order.item_id = params[:item_id]
       order.user_id = params[:user_id]
