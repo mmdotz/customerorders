@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
     render json: address.to_json, status: 200
   end
 
-  # def new
+  # def new  #this doesn't create anything but an empty row - why have this?
   #   address = Address.new
   #   render json: address.to_json, status: 200
   # end
